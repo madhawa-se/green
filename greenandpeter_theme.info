@@ -1,0 +1,14 @@
+name = greenandpeter_theme
+description = Starter theme designed for giving the developer more flexibility
+version = 1.2.7
+core = 6.x
+engine = phptemplate
+stylesheets[all][] = css/bootstrap.css
+stylesheets[all][] = css/theme.css
+stylesheets[print][] = css/print.css
+scripts[] = js/bootstrap.min.js
+
+
+regions[header]= Header
+regions[footer]= Footer
+regions[footer_bottom]= Footer Bottom

@@ -92,45 +92,51 @@
             <script type="text/javascript"><?php /* Needed to avoid Flash of Unstyled Content in IE */ ?></script>
     </head>
     <body class="<?php print $body_classes; ?>">
-        <div class="container">
-            <div id="header" class="header">
-                <div class="header-top">
-                    <?php if (!empty($header)) { ?>
-                        <div id="header-region">
-                            <?php print $header; ?>
-                        </div>
-                    <?php } ?>
-                </div>
-                <div class="header-bottom">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-2">
-                            <div id="logo-title">
-                                <?php if (!empty($logo)): ?>
-                                    <a href="<?php print $front_page; ?>" title="<?php print $site_name . " " . t('Home'); ?>" rel="home" id="logo">
-                                        <img class="logo" src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-                                    </a>
-                                <?php endif; ?>
-                            </div> <!-- /logo-title -->
-                        </div>
-                        <div class="col-xs-12 col-sm-10">
-                            <div id="navigation" class="menu
-                            <?php
-                            if (!empty($primary_links)) {
-                                print "withprimary";
-                            } if (!empty($secondary_links)) {
-                                print " withsecondary";
-                            }
-                            ?>">
-                                     <?php if (!empty($primary_links)) { ?>
-                                    <div id="primary" class="clear-block no-bullets">
-                                        <?php print theme('links', $primary_links, array('class' => 'links primary-links')); ?>
-                                    </div>
-                                <?php } ?>
-                            </div> <!-- /navigation -->
+        <div class="header-wrap">
+            <div class="container">
+                <div id="header" class="header">
+                    <div class="header-top">
+                        <?php if (!empty($header)) { ?>
+                            <div id="header-region">
+                                <?php print $header; ?>
+                            </div>
+                        <?php } ?>
+                    </div>
+                    <div class="header-bottom">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <div id="logo-title">
+                                    <?php if (!empty($logo)): ?>
+                                        <a href="<?php print $front_page; ?>" title="<?php print $site_name . " " . t('Home'); ?>" rel="home" id="logo">
+                                            <img class="logo" src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+                                        </a>
+                                    <?php endif; ?>
+                                </div> <!-- /logo-title -->
+                            </div>
+                            <div class="col-xs-10 search-box">
+                                <div class="search" style="display:none">
+                                    <input>search </input><i class="fa fa-close"></i>
+                                </div>
+                                <div id="navigation" class="menu
+                                <?php
+                                if (!empty($primary_links)) {
+                                    print "withprimary";
+                                } if (!empty($secondary_links)) {
+                                    print " withsecondary";
+                                }
+                                ?>">
+                                         <?php if (!empty($primary_links)) { ?>
+                                        <div id="primary" class="clear-block no-bullets">
+                                            <?php print theme('links', $primary_links, array('class' => 'links primary-links hidden-xs hidden-sm ')); ?>
+                                            <a href="javascript:void(0);"><i class="search fa fa-search" aria-hidden="true"></i></a>
+                                        </div>
+                                    <?php } ?>
+                                </div> <!-- /navigation -->
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div> <!-- /header -->
+                </div> <!-- /header -->
+            </div>
         </div>
         <div id="page">
             <div id="page" class="container">
@@ -160,6 +166,9 @@
                                 <div id="content-content" class="clear-block">
                                     <?php print $content; ?>
                                 </div> <!-- /content-content -->
+                                <?php if ($content_bottom) { ?> 
+                                    <?php print $content_bottom ?>                    
+                                <?php } ?>
                                 <?php print $feed_icons; ?>
                             </div> <!-- /content -->
 
@@ -190,11 +199,13 @@
 
                 <div class="footer-bottom">
                     <div class="container">
-                        <?php
-                        if (!empty($footer_bottom)) {
-                            print $footer_bottom;
-                        }
-                        ?> 
+                        <div class="row">
+                            <?php
+                            if (!empty($footer_bottom)) {
+                                print $footer_bottom;
+                            }
+                            ?> 
+                        </div>
                     </div>
                 </div>
             </div> <!-- /footer -->

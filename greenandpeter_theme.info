@@ -7,8 +7,13 @@ stylesheets[all][] = css/bootstrap.css
 stylesheets[all][] = css/theme.css
 stylesheets[print][] = css/print.css
 scripts[] = js/bootstrap.min.js
+scripts[] = js/app.js
 
 
 regions[header]= Header
-regions[footer]= Footer
+regions[left]= Left sidebar
+regions[right]= Right sidebar
+regions[content]= Content
+regions[content_bottom]= Content Bottom
+regions[footer]=Footer
 regions[footer_bottom]= Footer Bottom

@@ -294,12 +294,18 @@ a.ui-btn,div.ui-btn a,button,input[type="submit"], input[type="reset"],input[typ
     }
 }
 
+.header-wrap{
+    position: fixed;
+    background-color: @color-white;
+    width: 100%;
+    z-index: 100;
+}
 .header{
     .header-top{
         padding-top: .75em;
         font-weight: 600;
         font-family: @font-family-lato;
-        padding-bottom: 16px;
+        padding-bottom: 5px;
         font-size:0.824em;
         .contact-info,.social-media{
             vertical-align: top;
@@ -340,7 +346,7 @@ a.ui-btn,div.ui-btn a,button,input[type="submit"], input[type="reset"],input[typ
         }
     }
     .logo,#navigation{
-         transition:max-height .4s,padding .4s, background-color .4s,color .4s,transform .4s,opacity .4s ease-in-out;
+        transition:max-height .4s,padding .4s, background-color .4s,color .4s,transform .4s,opacity .4s ease-in-out;
     }
     .logo{
         max-height: 123px;
@@ -354,6 +360,11 @@ a.ui-btn,div.ui-btn a,button,input[type="submit"], input[type="reset"],input[typ
             li{
                 display: inline-block;
                 padding-right: 22px;
+                &.active,&.active-trail{
+                    a{
+                        color: @color-dark-gray;
+                    }
+                }
                 a{
                     font-size: 1.059em;
                     color: @color-gray;
@@ -448,7 +459,7 @@ a.ui-btn,div.ui-btn a,button,input[type="submit"], input[type="reset"],input[typ
     }
     .acc-logos,.mobile-apps{
         .content{
-            padding-right: 31px;
+            padding-right:30px;
             p{
                 &:nth-child(1){
                     img{
@@ -458,6 +469,16 @@ a.ui-btn,div.ui-btn a,button,input[type="submit"], input[type="reset"],input[typ
             }
         }
     }
+    .slide-in{
+        &.acc-logos,&.mobile-apps{
+            .content{
+                transition:transform .6s ease-in-out;
+                transform: translate3d(18px, 0, 0);
+                padding-right:12px;
+            }
+        }
+    }
+
 }
 @media screen and (max-width:991px){
     .footer{
@@ -501,9 +522,15 @@ a.ui-btn,div.ui-btn a,button,input[type="submit"], input[type="reset"],input[typ
 .banner{
     background-color: @color-blue;
     padding: 66px;
+    padding-top: 240px;
     margin-bottom: 30px;
     .title{
         color:@color-white;
+    }
+}
+@media screen and (max-width:991px){
+    .banner{
+        padding-top: 164px;
     }
 }
 
@@ -514,12 +541,15 @@ a.ui-btn,div.ui-btn a,button,input[type="submit"], input[type="reset"],input[typ
     transition:max-height .4s, background-color .4s,color .4s,transform .4s,opacity .4s ease-in-out;
 }
 .shrink{
-     .header{
-         .logo{
-             max-height: 46px;
-         }
-         #navigation{
-             padding: 12px 0 0 0;
-         }
+    .header-wrap{
+        box-shadow: 0 0 7px rgba(0,0,0,.1)!important;
+    }
+    .header{
+        .logo{
+            max-height: 46px;
+        }
+        #navigation{
+            padding: 12px 0 0 0;
+        }
     }
 }

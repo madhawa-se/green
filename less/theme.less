@@ -208,8 +208,12 @@ body,input,textarea,select {
         .make-sm-column-push(3);
     }
 }
-
-
+/*----width----*/
+@media (min-width: 1200px){
+    .container {
+        width:1100px;
+    }
+}
 //global styles
 a, abbr, acronym, address, applet, b, big, blockquote, body, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, tt, u, ul, var {
     margin: 0;
@@ -228,6 +232,8 @@ a, abbr, acronym, address, applet, b, big, blockquote, body, center, cite, code,
     padding-right: 5px;
     display: inline-block;
     font: normal normal normal 14px/1 fontawesome;
+    font-style: normal;
+    font-variant: normal;
     font-size: inherit;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
@@ -237,19 +243,23 @@ a.ui-btn,div.ui-btn a,button,input[type="submit"], input[type="reset"],input[typ
     padding: 5px 10px;
     border-radius: 3px;
     border: none;
-    font-size: 14px;
+    font-size:22px;
     font-weight: normal;
     text-align: center;
-    //background-color: @color-green;
+    background-color: @color-blue;
     color: white;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
     .transition(all .3s ease-out);
     &:hover,&:active{
-        // background-color: @color-green-dark !important;        
+        background-color: #36608a;        
+    }
+}
+//main
+#main {
+    .title{
+        margin-bottom: 10px;
     }
 }
 //header
-
 .header .contact-info,.social-media{
     display: inline-block;
     ul{
@@ -266,7 +276,6 @@ a.ui-btn,div.ui-btn a,button,input[type="submit"], input[type="reset"],input[typ
         }
     }
 }
-
 .social-media{
     ul{
         li{
@@ -293,12 +302,23 @@ a.ui-btn,div.ui-btn a,button,input[type="submit"], input[type="reset"],input[typ
         }
     }
 }
-
 .header-wrap{
     position: fixed;
     background-color: @color-white;
     width: 100%;
     z-index: 100;
+    height: 175px;
+    overflow: hidden;
+}
+@media(max-width:767px){
+    .header-wrap{
+        height:115px;
+    }
+}
+@media(max-width:991px){
+    .header-wrap{
+        height:104px;
+    }
 }
 .header{
     .header-top{
@@ -311,10 +331,13 @@ a.ui-btn,div.ui-btn a,button,input[type="submit"], input[type="reset"],input[typ
             vertical-align: top;
         }
     }
+    .header-bottom{
+        position: relative;
+    }
     .social-media,.contact-info{
         ul{
             li{
-                padding-left:0;
+                padding-left:0;  
             }
         }
     }
@@ -323,6 +346,7 @@ a.ui-btn,div.ui-btn a,button,input[type="submit"], input[type="reset"],input[typ
             line-height: 20px;
             li{
                 margin-left: 12px;
+                font-size: 1.1em;
             }
         }
     } 
@@ -343,11 +367,10 @@ a.ui-btn,div.ui-btn a,button,input[type="submit"], input[type="reset"],input[typ
                     margin-left: 13px;
                 }
             }
-
         }
     }
     .logo,#navigation{
-        transition:max-height .4s,padding .4s, background-color .4s,color .4s,transform .4s,opacity .4s ease-in-out;
+        transition:max-height .4s,opacity .4s,padding .4s, background-color .4s,color .4s,transform .4s,opacity .4s ease-in-out;
     }
     .logo{
         max-height: 123px;
@@ -373,16 +396,11 @@ a.ui-btn,div.ui-btn a,button,input[type="submit"], input[type="reset"],input[typ
             }
         }
         .search{
-            font-size: 1.059em;
-            color: @color-gray;
-            i{
-                -moz-transform: scaleX(-1);
-                -o-transform: scaleX(-1);
-                -webkit-transform: scaleX(-1);
-                transform: scaleX(-1);
-                filter: FlipH;
-                -ms-filter: "FlipH";
-            }
+            background-image: url(../images/search.jpg);
+            width: 20px;
+            height: 20px;
+            background-size: 22px;
+            background-repeat: no-repeat;
         }
     }
 }
@@ -421,11 +439,9 @@ a.ui-btn,div.ui-btn a,button,input[type="submit"], input[type="reset"],input[typ
                     color:@color-light-gray;
                 }    
             }
-
         }
     }
 }
-
 .footer{
     .footer-bottom{
         background-color:@color-green;
@@ -452,7 +468,8 @@ a.ui-btn,div.ui-btn a,button,input[type="submit"], input[type="reset"],input[typ
     }
     .copyright{
         .content{
-            padding-right:50px;
+            padding-right: 25px;
+            padding-left: 25px;
             p{
                 font-size: 0.647em;   
             }
@@ -474,15 +491,17 @@ a.ui-btn,div.ui-btn a,button,input[type="submit"], input[type="reset"],input[typ
         &.acc-logos,&.mobile-apps{
             .content{
                 transition:transform .6s ease-in-out;
-                transform: translate3d(18px, 0, 0);
+                transform: translate3d(10px, 0, 0);
                 padding-right:12px;
             }
         }
     }
-
 }
 @media screen and (max-width:991px){
     .footer{
+        .seconday-links-menu,.copyright,.acc-logos,.mobile-apps{
+            margin: 0 0 30px 0;       
+        }
         .social-media{
             float: none;
             text-align: center;
@@ -492,21 +511,19 @@ a.ui-btn,div.ui-btn a,button,input[type="submit"], input[type="reset"],input[typ
                 padding: 0;
             }        
         }
+        .acc-logos{
+            clear: left;
+        }
     }
 }
 @media screen and (max-width:767px){
     .footer{
-        .seconday-links-menu,.copyright,.acc-logos,.mobile-apps{
-            margin: 0 0 30px 0;       
-        }
         .acc-logos,.mobile-apps{
             text-align: center;      
         }
     }
 }
-
 //landing page list
-
 #landing-page-list{
     .card{
         margin-bottom:10px;
@@ -518,11 +535,10 @@ a.ui-btn,div.ui-btn a,button,input[type="submit"], input[type="reset"],input[typ
         }
     }
 }
-
 //banner
 .banner{
     background-color: @color-blue;
-    padding: 66px;
+    padding: 66px 0;
     padding-top: 240px;
     margin-bottom: 30px;
     .title{
@@ -534,15 +550,78 @@ a.ui-btn,div.ui-btn a,button,input[type="submit"], input[type="reset"],input[typ
         padding-top: 164px;
     }
 }
-
 //search box
 .search-box{
     -webkit-transition:max-height .4s, background-color .4s,color .4s,transform .4s,opacity .4s ease-in-out;
     -moz-transition:max-height .4s, background-color .4s,color .4s,transform .4s,opacity .4s ease-in-out;
     transition:max-height .4s, background-color .4s,color .4s,transform .4s,opacity .4s ease-in-out;
+
+    display: none;
+    position: absolute;
+    top: 0;
+    /* left: 0; */
+    right: 0;
+    bottom: 0;
+    width: 100%;
+
+    form{
+        height: 100%;
+
+        &>div{
+            height: 100%;
+        }
+        #search{
+            height: 100%;
+            display: block;
+            max-width: 500px;
+            float: right;
+            width: 100%;
+            label{
+                display: none;
+            }
+            input{
+                height: 100%;
+                border: none;
+                box-shadow: none;
+                font-size: 1.059em;
+            }
+            input[type="text"]:after{
+                content: 'X';
+            }
+            input[type="submit"]{
+                display: none;
+            }
+        }
+    }
+    .search-close{
+        color:@color-base;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+@media screen and (max-width:991px){
+    .search-box{ 
+        form{
+            #search{
+                max-width: 400px;
+            }
+        }
+    }
+}
+@media screen and (max-width:575px){
+    .search-box{ 
+        form{
+            #search{
+                max-width: 200px;
+            }
+        }
+    }
 }
 .shrink{
     .header-wrap{
+        height: 100px;
         box-shadow: 0 0 7px rgba(0,0,0,.1)!important;
     }
     .header{
@@ -551,6 +630,46 @@ a.ui-btn,div.ui-btn a,button,input[type="submit"], input[type="reset"],input[typ
         }
         #navigation{
             padding: 12px 0 0 0;
+        }
+    }
+}
+//search form
+
+.search-form{
+    input[type="submit"]{
+        margin-top: 10px;
+    }
+}
+
+.search-anim-on4{
+    .header{
+        #navigation{
+            padding-top: 46px;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .search-box{
+            display: block;
+            z-index: 10;
+        }
+    }
+}
+.search-anim-off4{
+    .header{
+        #navigation{
+            padding-top: 12px;
+            opacity: 1;
+        }
+        .search-box{
+            display: none;
+            z-index: -1;
+        }
+    }
+}
+.search-anim-on.shrink{
+    .header{
+        #navigation{
+            // padding-top:12px;
         }
     }
 }

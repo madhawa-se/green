@@ -1,4 +1,48 @@
 $(document).ready(function () {
+    $(".search-trigger").on('click', function () {
+        $("body").addClass("search-anim-on");
+        $(".search-box").css("display", "block");
+        $("#navigation").animate({
+            padding: "80px 0 0 0",
+        }, 200);
+
+        $("#navigation").animate({
+            opacity: 0,
+        }, 200);
+
+        $('#navigation').animate({
+            opacity: 0}, {
+            duration: 200,
+            complete: function () {
+                $("#navigation").css("display", "none");
+            }
+        });
+    });
+    $(".search-close").on('click', function () {
+        $("body").addClass("search-anim-off");
+        $(".search-box").css("display", "none");
+        $("#navigation").css("display", "block");
+        if (!$('body').hasClass('shrink')) {
+            if ($(window).width() < 991) {
+                $("#navigation").animate({
+                    padding: "24px auto auto",
+                }, 200);
+            } else {
+                $("#navigation").animate({
+                    padding: "46px auto auto",
+                }, 200);
+            }
+
+        } else {
+            $("#navigation").animate({
+                padding: "12px 0 0 0",
+            }, 200);
+        }
+        $("#navigation").animate({
+            opacity: 1
+        }, 200);
+    });
+
     $(document).on("scroll", function () {
         if ($(document).scrollTop() > 50) {
             $("body").addClass("shrink");
@@ -9,18 +53,6 @@ $(document).ready(function () {
 });
 
 (function ($) {
-
-    /**
-     * Copyright 2012, Digital Fusion
-     * Licensed under the MIT license.
-     * http://teamdf.com/jquery-plugins/license/
-     *
-     * @author Sam Sehnert
-     * @desc A small plugin that checks whether elements are within
-     *     the user visible viewport of a web browser.
-     *     only accounts for vertical position, not horizontal.
-     */
-
     $.fn.visible = function (partial) {
 
         var $t = $(this),

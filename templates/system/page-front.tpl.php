@@ -103,8 +103,12 @@
                         <?php } ?>
                     </div>
                     <div class="header-bottom">
+                        <div class="search-box">
+                            <?php print $search_box ?>
+                            <a class="search-close"><i class="fa fa-close"></i></a>
+                        </div>
                         <div class="row">
-                            <div class="col-xs-2">
+                            <div class="col-xs-3">
                                 <div id="logo-title">
                                     <?php if (!empty($logo)): ?>
                                         <a href="<?php print $front_page; ?>" title="<?php print $site_name . " " . t('Home'); ?>" rel="home" id="logo">
@@ -113,10 +117,7 @@
                                     <?php endif; ?>
                                 </div> <!-- /logo-title -->
                             </div>
-                            <div class="col-xs-10 search-box">
-                                <div class="search" style="display:none">
-                                    <input>search </input><i class="fa fa-close"></i>
-                                </div>
+                            <div class="col-xs-9">
                                 <div id="navigation" class="menu
                                 <?php
                                 if (!empty($primary_links)) {
@@ -128,7 +129,7 @@
                                          <?php if (!empty($primary_links)) { ?>
                                         <div id="primary" class="clear-block no-bullets">
                                             <?php print theme('links', $primary_links, array('class' => 'links primary-links hidden-xs hidden-sm ')); ?>
-                                            <a href="javascript:void(0);"><i class="search fa fa-search" aria-hidden="true"></i></a>
+                                            <a class="search-trigger" href="javascript:void(0);"><i class="search fa"></i></a>
                                         </div>
                                     <?php } ?>
                                 </div> <!-- /navigation -->
@@ -138,6 +139,16 @@
                 </div> <!-- /header -->
             </div>
         </div>
+        <section class="banner">
+            <div class="container">
+                <?php
+                $menuparent = menu_get_active_trail();
+                if ($menuparent[1]) {
+                    ?>
+                    <h1 class="title"><?php print $menuparent[1]['link_title']; ?></h1>
+                <?php } ?>
+            </div>
+        </section>
         <div id="page">
             <div id="page" class="container">
                 <div id="container" class="clear-block">
@@ -149,11 +160,9 @@
                     <?php endif; ?>
 
                     <div id="main" class="column"><div id="main-squeeze">
-                            <?php if (!empty($breadcrumb)): ?><div id="breadcrumb"><?php print $breadcrumb; ?></div><?php endif; ?>
                             <?php if (!empty($mission)): ?><div id="mission"><?php print $mission; ?></div><?php endif; ?>
 
                             <div id="content">
-                                <?php if (!empty($title)): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
                                 <?php if (!empty($tabs)): ?><div class="tabs"><?php print $tabs; ?></div><?php endif; ?>
                                 <?php
                                 if (!empty($messages)): print $messages;
@@ -166,6 +175,7 @@
                                 <div id="content-content" class="clear-block">
                                     <?php print $content; ?>
                                 </div> <!-- /content-content -->
+
                                 <?php if ($content_bottom) { ?> 
                                     <?php print $content_bottom ?>                    
                                 <?php } ?>
@@ -188,12 +198,14 @@
             <div id="footer" class="footer">
                 <div class="footer-top">
                     <div class="container">
-                        <?php print $footer_message; ?>
-                        <?php
-                        if (!empty($footer)) {
-                            print $footer;
-                        }
-                        ?> 
+                        <div class="row">
+                            <?php print $footer_message; ?>
+                            <?php
+                            if (!empty($footer)) {
+                                print $footer;
+                            }
+                            ?> 
+                        </div>
                     </div>
                 </div>
 

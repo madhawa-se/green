@@ -118,7 +118,7 @@
                                 </div> <!-- /logo-title -->
                             </div>
                             <div class="col-xs-9">
-                                <div id="navigation" class="menu
+                                <div id="navigation" class="navbar navbar-default menu
                                 <?php
                                 if (!empty($primary_links)) {
                                     print "withprimary";
@@ -130,7 +130,14 @@
                                         <div id="primary" class="clear-block no-bullets">
                                             <?php print theme('links', $primary_links, array('class' => 'links primary-links hidden-xs hidden-sm ')); ?>
                                             <a class="search-trigger" href="javascript:void(0);"><i class="search fa"></i></a>
+                                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                                <span class="hidden-txt">open menu</span>
+                                            </button>
                                         </div>
+                             
                                     <?php } ?>
                                 </div> <!-- /navigation -->
                             </div>
@@ -138,6 +145,23 @@
                     </div>
                 </div> <!-- /header -->
             </div>
+        </div>
+        <div class="header-mob-wrap visible-xs visible-sm">
+            <div class="navbar navbar-default menu
+            <?php
+            if (!empty($primary_links)) {
+                print "withprimary";
+            } if (!empty($secondary_links)) {
+                print " withsecondary";
+            }
+            ?>">
+                     <?php if (!empty($primary_links)) { ?>
+                    <!--Collection of nav links and other content for toggling -->
+                    <div id="navbarCollapse" class="collapse navbar-collapse">
+                        <?php print theme('links', $primary_links, array('class' => 'links primary-links nav nav-mob navbar-nav no-bullets')); ?>
+                    </div>
+                <?php } ?>
+            </div> <!-- /navigation -->
         </div>
         <section class="banner">
             <div class="container">
@@ -152,7 +176,6 @@
         <div id="page">
             <div id="page" class="container">
                 <div id="container" class="clear-block">
-
                     <?php if (!empty($left)): ?>
                         <div id="sidebar-left" class="column sidebar">
                             <?php print $left; ?>
@@ -160,6 +183,7 @@
                     <?php endif; ?>
 
                     <div id="main" class="column"><div id="main-squeeze">
+                            <?php if (!empty($breadcrumb)): ?><div id="breadcrumb"><?php print $breadcrumb; ?></div><?php endif; ?>
                             <?php if (!empty($mission)): ?><div id="mission"><?php print $mission; ?></div><?php endif; ?>
 
                             <div id="content">

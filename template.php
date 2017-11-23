@@ -193,7 +193,7 @@ function greenandpeter_theme_preprocess_search_theme_form(&$vars, $hook) {
   $vars['form']['search_theme_form']['#title'] = t('Search');
  
   // Add a custom class and placeholder to the search box
-  $vars['form']['search_theme_form']['#attributes'] = array('class' => 'form-control','placeholder' => 'Search');
+  $vars['form']['search_theme_form']['#attributes'] = array('class' => 'form-control','placeholder' => 'Search...');
  
   // Uncomment the line below to change the text on the submit button, changing Go as required.
   //$vars['form']['submit']['#value'] = t('Go');
